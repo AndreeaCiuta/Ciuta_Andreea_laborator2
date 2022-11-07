@@ -19,5 +19,7 @@ namespace Ciuta_Andreea_laborator2.Data
         public DbSet<Ciuta_Andreea_laborator2.Models.Publisher> Publisher { get; set; }
 
         public DbSet<Ciuta_Andreea_laborator2.Models.Author> Author { get; set; }
+
+        public DbSet<Ciuta_Andreea_laborator2.Models.Category> Category { get; set; }
     }
 }

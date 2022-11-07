@@ -4,6 +4,7 @@ using Ciuta_Andreea_laborator2.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Ciuta_Andreea_laborator2.Migrations
 {
     [DbContext(typeof(Ciuta_Andreea_laborator2Context))]
-    partial class Ciuta_Andreea_laborator2ContextModelSnapshot : ModelSnapshot
+    [Migration("20221107192341_BookCategory")]
+    partial class BookCategory
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
