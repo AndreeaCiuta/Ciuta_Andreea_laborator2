@@ -5,8 +5,20 @@ using Microsoft.AspNetCore.Identity;
 using Ciuta_Andreea_laborator2.Data.LibraryIdentity;
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("AdminPolicy", policy =>
+   policy.RequireRole("Admin"));
+});
+
 // Add services to the container.
-builder.Services.AddRazorPages();
+builder.Services.AddRazorPages(options =>
+{
+    options.Conventions.AuthorizeFolder("/Books");
+    options.Conventions.AllowAnonymousToPage("/Books/Index");
+    options.Conventions.AllowAnonymousToPage("/Books/Details");
+    options.Conventions.AuthorizeFolder("/Members", "AdminPolicy");
+});
 builder.Services.AddDbContext<Ciuta_Andreea_laborator2Context>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("Ciuta_Andreea_laborator2Context") ?? throw new InvalidOperationException("Connection string 'Ciuta_Andreea_laborator2Context' not found.")));
 
@@ -15,6 +27,7 @@ builder.Services.AddDbContext<LibraryIdentityContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("Ciuta_Andreea_laborator2Context") ?? throw new InvalidOperationException("Connection string 'Ciuta_Andreea_laborator2Context' not found.")));
 builder.Services.AddDefaultIdentity<IdentityUser>(options =>
 options.SignIn.RequireConfirmedAccount = true)
+    .AddRoles<IdentityRole>()
  .AddEntityFrameworkStores<LibraryIdentityContext>();
 
 var app = builder.Build();

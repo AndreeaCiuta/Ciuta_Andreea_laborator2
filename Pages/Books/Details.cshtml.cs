@@ -7,9 +7,12 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Ciuta_Andreea_laborator2.Data;
 using Ciuta_Andreea_laborator2.Models;
+using Microsoft.AspNetCore.Authorization;
+using System.Data;
 
 namespace Ciuta_Andreea_laborator2.Pages.Books
 {
+
     public class DetailsModel : PageModel
     {
         private readonly Ciuta_Andreea_laborator2.Data.Ciuta_Andreea_laborator2Context _context;
